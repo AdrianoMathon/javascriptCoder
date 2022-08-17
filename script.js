@@ -27,7 +27,7 @@ console.log(resultado)
 
 */
 
-
+/*
 const productos_definidos = [
     {
     id: '1',
@@ -110,3 +110,26 @@ agregarAlCarrito(productos)
 
 imprimirCarrito(carrito)
 console.log('El total es $',obtenerTotal(carrito))
+
+*/
+
+
+const boton = document.getElementById('boton');
+
+boton.addEventListener('click', () => {
+    document.body.style.backgroundColor = 'white'
+    alert("Reiniciaste el color")
+}
+)
+
+const divColor = document.getElementById('divColor');
+const inputColor = document.getElementById('inputColor');
+
+inputColor.addEventListener('input', () => {
+    document.body.style.backgroundColor = inputColor.value;
+    console.log(inputColor.value);
+}
+)
+
+
+
