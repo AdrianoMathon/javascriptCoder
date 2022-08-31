@@ -1,0 +1,19 @@
+.section__video {
+    width: 100%;
+    padding-bottom: 1rem;
+}
+.video {
+    @include sizes(100%, 500px)
+}
+
+.parrafo_instrucciones {
+    @extend %pcentrado;
+    padding-bottom: 2rem;
+}
+@media screen and (max-width: 480px) {
+    .video {
+        height: 350px;
+        width: 100%;
+        padding: 10px;
+    }
+    }

@@ -4,35 +4,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+    <title>Purificate.uy | Filtros de agua</title>
+    <meta name="keywords" content="agua, ahorro, bidones, purificacion">
+    <meta name="description" content="Filtros purificadores de agua, ahorra en bidones y ayuda al medio ambiente">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!--     <link rel="stylesheet" href="./css/styles.css"> -->
+    <link rel="stylesheet" href="./css/translated.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-   
-    <div class="container">
-        <form id="idForm">
-            <div class="mb-3">
-              <label for="idNombre" class="form-label">Nombre Tarea</label>
-              <input type="text" class="form-control" name="nombre" required>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark menu">
+            <div class="container-fluid menu__div">
+              <a class="navbar-brand" href="./index.html"> <img src="./img/logo.png"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./nuestros-productos.html">Nuestros productos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./tienda.html">Tienda</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./instrucciones.html">Instrucciones</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./contactanos.html">Contáctanos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./sobre-nosotros.html">Sobre nosotros</a>
+                  </li>
+
+                </ul>
+              </div>
             </div>
-            <div class="mb-3">
-                <label for="idCategoria" class="form-label">Categoria Tarea</label>
-                <input type="text" class="form-control"  name="categoria">
-              </div>
-              <div class="mb-3">
-                <label for="idDescripcion" class="form-label">Descripcion Tarea</label>
-                <input type="text" class="form-control" name="descripcion">
-              </div>
-            <button type="submit" class="btn btn-success">Crear tarea</button>
-          </form>
-    </div><br><br>
+          </nav>
+    </header>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <section class="carousel-inner">
+          <div class="carousel-item active">
+            <picture>
+                <img src="img/inicio.jpg" class="d-block w-100" alt="imagen de inicio">
+            </picture>
+          </div>
+          <div class="carousel-item">
+            <picture>
+                <img src="img/inicio2.JPG" class="d-block w-100" alt="imagen de inicio">
+            </picture>
+          </div>
+        </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+<section>
+    <h1 class="parrafo__titulo">Beneficios de obtener nuestro filtro</h1>
+    <p class="parrafo__contenido">
+        Purificate.uy tiene como propósito la transformación de la calidad de vida de las personas mejorando los vínculos con su cuerpo, finanzas y medio ambiente.
+    </p>
+    <p class="parrafo__contenido">
+        El filtro de agua de Purificate.uy es la opción ideal si lo que buscas es tomar agua de calidad en tu día a día y ahorrar dinero, eliminando el consumo de bidones de agua tradicionales.
+    </p>
+    <p class="parrafo__contenido"> 
+        El filtro consta de 3 elementos de filtración de la mejor calidad para garantizarte que el agua que estás consumiendo es 100% confiable. 
+    </p>
+    <p class="parrafo__contenido">
+        Los 3 elementos de filtración tienen una vida útil de entre 6 y 12 meses según el uso que se le dé al filtro y es muy simple reemplazarlos.
+    </p>
+</section>
 
-    <div class="container">
-        <button id="botonTareas" class="btn btn-light">Mostrar tareas</button><br><br>
-        <div class="row" id="divTareas"></div>
-    </div>
+<h2 class="parrafo__titulo">Etapas de filtrado</h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+<main id="filtrados">
+    <article class="filtrados">
+            <picture class="cilindro">
+                <img src="img/cilindro multicapas.JPG" alt="Cilindro multicapas">
+            </picture>
+            <p class="parrafo__cilindro">Mediante goteo el agua pasa a través de el cilindro multicapas en el cual cada elemento tiene un propósito especifico como por ejemplo: balancear el pH y reducir el cloro.
+            </p>
+            <picture class="domo">
+                <img src="img/domo_ceramico.jpg" alt="Domo ceramico">
+            </picture>
+            <p class="parrafo__domo">El agua pasa a través de un filtro cerámico con una porosidad de 0.5um lo cual es mucho menor al tamaño de las bacterias logrando así que se queden en la primera etapa.
+            </p>
+            <picture class="piedras">
+                <img src="img/piedras minerales.JPG" alt="Piedras minerales">
+            </picture>
+            <p class="parrafo__piedras">El disco de piedras marinas que lleva en el fondo es el encargado de reajustar el sabor del agua después de pasar por todas las etapas de filtración.
+            </p>
+</main>
+
+<footer>
+<picture>    
+    <img src="./img/logo.png" alt="Logo">
+</picture>
+<div>
+    <p><b>Horario:</b> Lunes a viernes de 10:00hs a 18:00hs</p>
+    <p><b>Contacto:</b> contacto@purificate.uy</p>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

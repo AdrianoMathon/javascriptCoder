@@ -1,0 +1,18 @@
+.tarjetas {
+    max-width: 420px;
+}
+.card {
+    border: none;
+    align-items: center;
+    text-align: center;
+}
+
+.parrafo_nosotros {
+    @extend %pcentrado;
+    width: 80%;
+    margin-bottom: 1rem;
+}
+
+.parrafo_tarjetas {
+    @extend %pjustificado;
+}

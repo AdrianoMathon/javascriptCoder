@@ -131,7 +131,7 @@ inputColor.addEventListener('input', () => {
 }
 )
 */
-
+/*
 class Tarea {
     constructor(nombre, categoria, descripcion) {
         this.nombre = nombre
@@ -196,3 +196,69 @@ botonTareas.addEventListener('click', () => {
         })
     })
 })
+*/
+
+class Producto {
+    constructor(id, nombre, precio, descripcion){
+        this.id = id
+        this.nombre = nombre
+        this.precio = precio
+        this.descripcion = descripcion
+    
+    }
+}
+
+const purificador = new Producto(1, "Filtro Purificador", 2190, "Filtro purificador de 14 litros")
+const domoCeramica = new Producto(2, "Domo de cerámica", 490, "Repuesto domo de cerámica")
+const cilindro = new Producto(3, "Cilindro multicapas", 590, "Repuesto cilindro multicapas")
+const piedrasMinerales = new Producto(4, "Piedras minerales", 490, "Repuesto piedras minerales")
+const filtroDucha = new Producto(5, "Filtro para ducha", 1090, "Filtro para ducha de máxima calidad")
+
+const productos = [purificador, domoCeramica, cilindro, piedrasMinerales, filtroDucha]
+
+const divProductos = document.getElementById("divProductos")
+const botonCarrito = document.getElementById("botonCarrito")
+const botonesProductos = document.getElementsByClassName("botonesProductos")
+
+let carrito = []
+
+productos.forEach(producto => {
+    divProductos.innerHTML += `
+    <div class="card border-primary mb-3"  style="max-width: 20rem;margin:4px;">
+      <div class="card-header">${producto.nombre}</div>
+        <div class="card-body">
+          <p class="card-text">${producto.descripcion}</p>
+          <p class="card-text">Precio: $${producto.precio}</p>
+          <button class="btn btn-secondary botonesProductos" id="producto${producto.id}">Agregar al carrito</button>
+      </div>
+    </div>
+    `
+
+})
+
+
+for(let i = 0; i < botonesProductos.length; i++) {
+    botonesProductos[i].addEventListener('click', () => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado al carrito',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        })
+
+    }
+/*
+const boton = getElementById("producto${producto.id}")
+
+boton.addEventListener('click',() => {
+    agregarAlCarrito(producto.id)
+})
+
+
+const agregarAlCarrito = (prodID) => {
+    const item = productos.find ((producto) => producto.id === prodID)
+    carrito.push(item)
+    console.log(carrito)
+} */

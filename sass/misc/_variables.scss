@@ -1,0 +1,12 @@
+/* Variables */
+
+$colors:(
+    purificador:#3290bc,
+    repuestos: #317899,
+    ducha: #46a8d5,
+);
+@each $key, $val in $colors {
+    .text--#{$key} {
+        color: #{$val};
+    }
+}
