@@ -204,7 +204,6 @@ class Producto {
         this.nombre = nombre
         this.precio = precio
         this.descripcion = descripcion
-    
     }
 }
 
@@ -216,26 +215,115 @@ const filtroDucha = new Producto(5, "Filtro para ducha", 1090, "Filtro para duch
 
 const productos = [purificador, domoCeramica, cilindro, piedrasMinerales, filtroDucha]
 
-const divProductos = document.getElementById("divProductos")
-const botonCarrito = document.getElementById("botonCarrito")
+
+
+// Variables
+
+const renderProductos = document.querySelector(".renderProductos")
+const tablaCarrito = document.querySelector(".tablaCarrito")
 const botonesProductos = document.getElementsByClassName("botonesProductos")
 
-let carrito = []
+
+
+function renderProd() {
 
 productos.forEach(producto => {
-    divProductos.innerHTML += `
-    <div class="card border-primary mb-3"  style="max-width: 20rem;margin:4px;">
+    renderProductos.innerHTML += `
+    <div class="card border-primary mb-3" style="max-width: 20rem;margin:4px;">
       <div class="card-header">${producto.nombre}</div>
         <div class="card-body">
           <p class="card-text">${producto.descripcion}</p>
           <p class="card-text">Precio: $${producto.precio}</p>
-          <button class="btn btn-secondary botonesProductos" id="producto${producto.id}">Agregar al carrito</button>
+            <div class="btn btn-secondary botonesProductos" onclick="añadirAlCarrito(${producto.id})">Agregar al carrito</div>
       </div>
     </div>
     `
+})}
 
-})
+renderProd()
 
+
+// Array Carrito
+
+let carrito = []
+
+// Añadir al carrito
+
+function añadirAlCarrito(id){ 
+    // chequea si el producto estaba agregado
+    if(carrito.some((item) => item.id === id)){
+        cambiarNumeroDeUnidades("aumentar", id)
+    } else {
+    const item = productos.find((producto) => producto.id === id )
+    carrito.push({
+        ...item,
+        numeroDeUnidades : 1,
+    })
+        
+}
+
+actualizarCarrito()
+
+}
+
+// Actualizar carrito
+
+ function actualizarCarrito(){
+    renderCarrito()
+    //renderSubtotal()
+}
+
+// Render carrito
+
+function renderCarrito(){
+    tablaCarrito.innerHTML += ""
+    carrito.forEach( (item) => {
+        tablaCarrito.innerHTML += `
+    <div class="container">
+		<hr>
+		<table class="table">
+			<thead>
+			  <tr>
+				<th scope="col">${item.id}</th>
+				<th scope="col">${item.nombre}</th>
+                <th class="btn" scope="col" onclick="cambiarNumeroDeUnidades('disminuir', ${item.id})">-</th>
+				<th scope="col">${item.numeroDeUnidades}</th>
+                <th class="btn" scope="col" onclick="cambiarNumeroDeUnidades('aumentar', ${item.id})">+</th>
+				<th scope="col">${item.precio}</th>
+			  </tr>
+			</thead>
+			<tbody id="items"></tbody>
+		  </table>
+		<div class="row" id="cards"></div>
+	</div>
+    `
+    })
+}
+
+
+// Funcion aumentar/disminuir items
+
+function cambiarNumeroDeUnidades(action, id) {
+    carrito = carrito.map((item) =>  {
+        let numeroDeUnidades = item.numeroDeUnidades
+
+        if(item.id === id) {
+            if(action === "disminuir" && numeroDeUnidades > 1){
+                numeroDeUnidades--
+            } else if(action === "aumentar"){
+                numeroDeUnidades++
+            }
+        }
+        return {
+            ...item,
+            numeroDeUnidades
+        }
+    })
+    actualizarCarrito()
+}
+
+
+// Alerta de agregado al carrito
 
 for(let i = 0; i < botonesProductos.length; i++) {
     botonesProductos[i].addEventListener('click', () => {
@@ -247,18 +335,6 @@ for(let i = 0; i < botonesProductos.length; i++) {
             timer: 2000
           })
         })
+    } 
 
-    }
-/*
-const boton = getElementById("producto${producto.id}")
-
-boton.addEventListener('click',() => {
-    agregarAlCarrito(producto.id)
-})
-
-
-const agregarAlCarrito = (prodID) => {
-    const item = productos.find ((producto) => producto.id === prodID)
-    carrito.push(item)
-    console.log(carrito)
-} */
+    
