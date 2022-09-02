@@ -217,11 +217,12 @@ const productos = [purificador, domoCeramica, cilindro, piedrasMinerales, filtro
 
 
 
-// Variables
+///////// Variables
 
 const renderProductos = document.querySelector(".renderProductos")
 const tablaCarrito = document.querySelector(".tablaCarrito")
 const botonesProductos = document.getElementsByClassName("botonesProductos")
+const subTotal = document.querySelector(".subtotal")
 
 
 
@@ -243,18 +244,19 @@ productos.forEach(producto => {
 renderProd()
 
 
-// Array Carrito
+///////// Array Carrito
 
 let carrito = []
 
-// Añadir al carrito
+////////// Añadir al carrito
 
 function añadirAlCarrito(id){ 
     // chequea si el producto estaba agregado
+
     if(carrito.some((item) => item.id === id)){
         cambiarNumeroDeUnidades("aumentar", id)
     } else {
-    const item = productos.find((producto) => producto.id === id )
+    const item = productos.find((producto) => producto.id === id)
     carrito.push({
         ...item,
         numeroDeUnidades : 1,
@@ -266,14 +268,35 @@ actualizarCarrito()
 
 }
 
-// Actualizar carrito
+console.log(carrito)
+
+///////// Actualizar carrito
 
  function actualizarCarrito(){
     renderCarrito()
-    //renderSubtotal()
+    renderSubtotal()
 }
 
-// Render carrito
+
+///////// Render subtotal
+
+function renderSubtotal() {
+    let precioTotal = 0 
+    let totalItems = 0
+
+    carrito.forEach((item) => {
+    precioTotal += item.precio * item.numeroDeUnidades
+    totalItems += item.numeroDeUnidades  
+    
+})
+
+subTotal.innerHTML = `Subtotal (${totalItems} items): $${precioTotal}`
+
+}
+
+
+
+////////// Render carrito
 
 function renderCarrito(){
     tablaCarrito.innerHTML += ""
@@ -290,6 +313,7 @@ function renderCarrito(){
 				<th scope="col">${item.numeroDeUnidades}</th>
                 <th class="btn" scope="col" onclick="cambiarNumeroDeUnidades('aumentar', ${item.id})">+</th>
 				<th scope="col">${item.precio}</th>
+                <th class="btn" scope="col" onclick="eliminarItem (${item.id})">Eliminar</th>
 			  </tr>
 			</thead>
 			<tbody id="items"></tbody>
@@ -298,10 +322,11 @@ function renderCarrito(){
 	</div>
     `
     })
+
 }
 
 
-// Funcion aumentar/disminuir items
+///////// Funcion aumentar/disminuir items
 
 function cambiarNumeroDeUnidades(action, id) {
     carrito = carrito.map((item) =>  {
@@ -323,7 +348,15 @@ function cambiarNumeroDeUnidades(action, id) {
 }
 
 
-// Alerta de agregado al carrito
+///////// Funcion eliminar del carrito
+
+function eliminarItem (id) {
+carrito = carrito.filter( (item) => item.id !== id)
+
+actualizarCarrito()
+}
+
+///////// Alerta de agregado al carrito
 
 for(let i = 0; i < botonesProductos.length; i++) {
     botonesProductos[i].addEventListener('click', () => {
