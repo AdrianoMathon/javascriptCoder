@@ -197,7 +197,7 @@ botonTareas.addEventListener('click', () => {
     })
 })
 */
-
+/*
 class Producto {
     constructor(id, nombre, precio, descripcion){
         this.id = id
@@ -370,4 +370,19 @@ for(let i = 0; i < botonesProductos.length; i++) {
         })
     } 
 
+    */
+
+const divPersonajes = document.getElementById("divPersonajes")
+
+fetch('https://thronesapi.com/api/v2/Characters/2')
+.then(response => response.json())
+.then(({family, fullName, title, imageUrl}) => {
+    divPersonajes.innerHTML = `
+        <img src='${imageUrl}'>
+        <p>Familia: ${family} </p>
+        <p>Nombre: ${fullName} </p>
+        <p>Titulo: ${title} </p>
     
+    `
+})
+
