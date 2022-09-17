@@ -197,21 +197,22 @@ botonTareas.addEventListener('click', () => {
     })
 })
 */
-/*
+
 class Producto {
-    constructor(id, nombre, precio, descripcion){
+    constructor(id, nombre, precio, descripcion, imgSrc){
         this.id = id
         this.nombre = nombre
         this.precio = precio
         this.descripcion = descripcion
+        this.imgSrc = imgSrc
     }
 }
 
-const purificador = new Producto(1, "Filtro Purificador", 2190, "Filtro purificador de 14 litros")
-const domoCeramica = new Producto(2, "Domo de cerámica", 490, "Repuesto domo de cerámica")
-const cilindro = new Producto(3, "Cilindro multicapas", 590, "Repuesto cilindro multicapas")
-const piedrasMinerales = new Producto(4, "Piedras minerales", 490, "Repuesto piedras minerales")
-const filtroDucha = new Producto(5, "Filtro para ducha", 1090, "Filtro para ducha de máxima calidad")
+const purificador = new Producto(1, "Filtro Purificador", 2190, "Filtro purificador de 14 litros", "./img/producto.jpg")
+const domoCeramica = new Producto(2, "Domo de cerámica", 490, "Repuesto domo de cerámica", "./img/domo_ceramico.jpg")
+const cilindro = new Producto(3, "Cilindro multicapas", 590, "Repuesto cilindro multicapas", "./img/cilindro multicapas.jpg")
+const piedrasMinerales = new Producto(4, "Piedras minerales", 490, "Repuesto piedras minerales", "./img/piedras minerales.jpg")
+const filtroDucha = new Producto(5, "Filtro para ducha", 1090, "Filtro para ducha de máxima calidad", "./img/filtro ducha.jpg")
 
 const productos = [purificador, domoCeramica, cilindro, piedrasMinerales, filtroDucha]
 
@@ -230,9 +231,10 @@ function renderProd() {
 
 productos.forEach(producto => {
     renderProductos.innerHTML += `
-    <div class="card border-primary mb-3" style="max-width: 20rem;margin:4px;">
+    <div class="card border-primary mb-3" style="max-width:20rem;margin:25px;">
       <div class="card-header">${producto.nombre}</div>
         <div class="card-body">
+        <img style="width:350px; height:350px; gap:10rem;" src="${producto.imgSrc}">
           <p class="card-text">${producto.descripcion}</p>
           <p class="card-text">Precio: $${producto.precio}</p>
             <div class="btn btn-secondary botonesProductos" onclick="añadirAlCarrito(${producto.id})">Agregar al carrito</div>
@@ -268,7 +270,7 @@ actualizarCarrito()
 
 }
 
-console.log(carrito)
+
 
 ///////// Actualizar carrito
 
@@ -299,21 +301,21 @@ subTotal.innerHTML = `Subtotal (${totalItems} items): $${precioTotal}`
 ////////// Render carrito
 
 function renderCarrito(){
-    tablaCarrito.innerHTML += ""
-    carrito.forEach( (item) => {
+    tablaCarrito.innerHTML = ""
+    carrito.forEach((item) => {
         tablaCarrito.innerHTML += `
     <div class="container">
 		<hr>
 		<table class="table">
 			<thead>
 			  <tr>
-				<th scope="col">${item.id}</th>
+				<th scope="col"><img style="width:50px; height:50px;" src="${item.imgSrc}"</th>
 				<th scope="col">${item.nombre}</th>
                 <th class="btn" scope="col" onclick="cambiarNumeroDeUnidades('disminuir', ${item.id})">-</th>
 				<th scope="col">${item.numeroDeUnidades}</th>
                 <th class="btn" scope="col" onclick="cambiarNumeroDeUnidades('aumentar', ${item.id})">+</th>
 				<th scope="col">${item.precio}</th>
-                <th class="btn" scope="col" onclick="eliminarItem (${item.id})">Eliminar</th>
+                <th class="btn" scope="col" onclick="eliminarItem(${item.id})">Eliminar</th>
 			  </tr>
 			</thead>
 			<tbody id="items"></tbody>
@@ -324,6 +326,7 @@ function renderCarrito(){
     })
 
 }
+
 
 
 ///////// Funcion aumentar/disminuir items
@@ -344,6 +347,7 @@ function cambiarNumeroDeUnidades(action, id) {
             numeroDeUnidades
         }
     })
+    
     actualizarCarrito()
 }
 
@@ -351,7 +355,7 @@ function cambiarNumeroDeUnidades(action, id) {
 ///////// Funcion eliminar del carrito
 
 function eliminarItem (id) {
-carrito = carrito.filter( (item) => item.id !== id)
+carrito = carrito.filter((item) => item.id !== id)
 
 actualizarCarrito()
 }
@@ -370,19 +374,4 @@ for(let i = 0; i < botonesProductos.length; i++) {
         })
     } 
 
-    */
-
-const divPersonajes = document.getElementById("divPersonajes")
-
-fetch('https://thronesapi.com/api/v2/Characters/2')
-.then(response => response.json())
-.then(({family, fullName, title, imageUrl}) => {
-    divPersonajes.innerHTML = `
-        <img src='${imageUrl}'>
-        <p>Familia: ${family} </p>
-        <p>Nombre: ${fullName} </p>
-        <p>Titulo: ${title} </p>
-    
-    `
-})
 
