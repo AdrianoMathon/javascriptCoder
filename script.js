@@ -224,6 +224,7 @@ const renderProductos = document.querySelector(".renderProductos")
 const tablaCarrito = document.querySelector(".tablaCarrito")
 const botonesProductos = document.getElementsByClassName("botonesProductos")
 const subTotal = document.querySelector(".subtotal")
+const finalizar = document.querySelector(".divFinalizar")
 
 
 
@@ -232,7 +233,7 @@ function renderProd() {
 productos.forEach(producto => {
     renderProductos.innerHTML += `
     <div class="card border-primary mb-3" style="max-width:20rem;margin:25px;">
-      <div class="card-header">${producto.nombre}</div>
+      <div class="card-title">${producto.nombre}</div>
         <div class="card-body">
         <img style="width:350px; height:350px; gap:10rem;" src="${producto.imgSrc}">
           <p class="card-text">${producto.descripcion}</p>
@@ -248,7 +249,8 @@ renderProd()
 
 ///////// Array Carrito
 
-let carrito = []
+let carrito = JSON.parse(localStorage.getItem("CARRITO")) || []
+actualizarCarrito()
 
 ////////// Añadir al carrito
 
@@ -263,7 +265,7 @@ function añadirAlCarrito(id){
         ...item,
         numeroDeUnidades : 1,
     })
-        
+
 }
 
 actualizarCarrito()
@@ -277,10 +279,16 @@ actualizarCarrito()
  function actualizarCarrito(){
     renderCarrito()
     renderSubtotal()
+
+
+///////// guardar en localstorage
+localStorage.setItem("CARRITO", JSON.stringify(carrito))
 }
 
 
 ///////// Render subtotal
+
+
 
 function renderSubtotal() {
     let precioTotal = 0 
@@ -293,7 +301,6 @@ function renderSubtotal() {
 })
 
 subTotal.innerHTML = `Subtotal (${totalItems} items): $${precioTotal}`
-
 }
 
 
@@ -372,6 +379,10 @@ for(let i = 0; i < botonesProductos.length; i++) {
             timer: 2000
           })
         })
+
+
+
+
     } 
 
 
