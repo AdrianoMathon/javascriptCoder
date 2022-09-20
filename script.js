@@ -209,9 +209,9 @@ class Producto {
 }
 
 const purificador = new Producto(1, "Filtro Purificador", 2190, "Filtro purificador de 14 litros", "./img/producto.jpg")
-const domoCeramica = new Producto(2, "Domo de cerámica", 490, "Repuesto domo de cerámica", "./img/domo_ceramico.jpg")
-const cilindro = new Producto(3, "Cilindro multicapas", 590, "Repuesto cilindro multicapas", "./img/cilindro multicapas.jpg")
-const piedrasMinerales = new Producto(4, "Piedras minerales", 490, "Repuesto piedras minerales", "./img/piedras minerales.jpg")
+const domoCeramica = new Producto(2, "Domo de cerámica", 490, "Repuesto domo de cerámica", "./img-prod/domo.jpg")
+const cilindro = new Producto(3, "Cilindro multicapas", 590, "Repuesto cilindro multicapas", "./img-prod/cilindro.jpg")
+const piedrasMinerales = new Producto(4, "Piedras minerales", 490, "Repuesto piedras minerales", "./img-prod/mineralizador.jpg")
 const filtroDucha = new Producto(5, "Filtro para ducha", 1090, "Filtro para ducha de máxima calidad", "./img/filtro ducha.jpg")
 
 const productos = [purificador, domoCeramica, cilindro, piedrasMinerales, filtroDucha]
@@ -307,7 +307,7 @@ function renderCarrito(){
     <div class="container">
 		<hr>
 		<table class="table">
-			<thead>
+			<thead  style="vertical-align:baseline;">
 			  <tr>
 				<th scope="col"><img style="width:50px; height:50px;" src="${item.imgSrc}"</th>
 				<th scope="col">${item.nombre}</th>
