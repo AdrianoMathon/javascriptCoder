@@ -225,6 +225,7 @@ const tablaCarrito = document.querySelector(".tablaCarrito")
 const botonesProductos = document.getElementsByClassName("botonesProductos")
 const subTotal = document.querySelector(".subtotal")
 const finalizar = document.querySelector(".divFinalizar")
+const botonVaciar = document.getElementById("botonVaciar")
 
 
 
@@ -233,7 +234,7 @@ function renderProd() {
 productos.forEach(producto => {
     renderProductos.innerHTML += `
     <div class="card border-primary mb-3" style="max-width:20rem;margin:25px;">
-      <div class="card-title">${producto.nombre}</div>
+      <div class="card-title h5">${producto.nombre}</div>
         <div class="card-body">
         <img style="width:350px; height:350px; gap:10rem;" src="${producto.imgSrc}">
           <p class="card-text">${producto.descripcion}</p>
@@ -265,11 +266,8 @@ function añadirAlCarrito(id){
         ...item,
         numeroDeUnidades : 1,
     })
-
 }
-
 actualizarCarrito()
-
 }
 
 
@@ -379,10 +377,30 @@ for(let i = 0; i < botonesProductos.length; i++) {
             timer: 2000
           })
         })
-
-
-
-
     } 
 
 
+
+
+    
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+
+    actualizarCarrito()
+})
+
+
+
+///////// API GOOGLE MAPS
+
+function iniciarMap(){
+    var coord = {lat:-34.9129033, lng:-56.158566}
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: coord
+    })
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    })
+}
