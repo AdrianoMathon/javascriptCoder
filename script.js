@@ -234,7 +234,7 @@ function renderProd() {
 productos.forEach(producto => {
     renderProductos.innerHTML += `
     <div class="card border-primary mb-3" style="max-width:20rem;margin:25px;">
-      <div class="card-title h5">${producto.nombre}</div>
+      <div class="card-title h4 parrafo__titulo" style="font-size:25px" >${producto.nombre}</div>
         <div class="card-body">
         <img style="width:350px; height:350px; gap:10rem;" src="${producto.imgSrc}">
           <p class="card-text">${producto.descripcion}</p>
